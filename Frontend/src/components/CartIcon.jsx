@@ -1,7 +1,9 @@
 import React from 'react'
+import { useCart } from '../context/CartContext';
 
 const CartIcon = () => {
-    const totalQuantity = 5;
+    const {cartItems} = useCart();
+    const totalQuantity = cartItems.reduce((total, item)=> total + item.quantity, 0);
   return (
     <div className="flex-none">
     <div className="dropdown dropdown-end">
