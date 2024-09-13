@@ -24,7 +24,7 @@ const Home = () => {
                     Welcome to <br /> <span className='text-teal-700'>Coding Era</span> 
                 </h1>
                 <p className='py-6'> We offer high quality online courses for programming and website templates you can buy.</p>
-                <button className='btn btn-primary'>Shop</button>
+                <a href='/shope' className='btn btn-primary'>Shop</a>
             </div>
         </div>
         
