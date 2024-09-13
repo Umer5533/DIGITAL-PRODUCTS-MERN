@@ -1,6 +1,9 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
 import axios from 'axios'
+import {loadStripe} from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_test_51PxQJtEuVQRSgpnGxx7PVB0OuopROVDWNVN8lotuKKDUvpyjupb1tvv3KtiRkpgAAJtQZXbzBnLYiH6SHB60tbgY00slgDuKmD')
 
 
 const Cart = () => {
@@ -11,6 +14,34 @@ const Cart = () => {
     }
 
     const totalPrice = cartItems.reduce((acc, item)=> acc + item.priceInCents * item.quantity, 0);
+
+
+    const handleCheckout =async ()=>{
+        const stripe = await stripePromise;
+
+        const transformedItems = cartItems.map(item=>({
+            name :item.name,
+            priceInCents: item.priceInCents,
+            quantity:item.quantity,
+            image: item.image
+        }));
+
+        try {
+            const response = await axios.post('http://localhost:3000/stripe/create-checkout-session',{
+                products: transformedItems
+            });
+
+            const {error} = await stripe.redirectToCheckout({
+                sessionId : response.data.id
+            });
+
+            if(error){
+                console.error('Error during stripe checkout redirection: ', error);
+            }
+        } catch ( error) {
+            console.error('Checkout process: ', error)
+        }
+    }
   return (
     <div className='p-4 mt-16 max-w-[1400px] mx-auto'>
     <h2 className='text-2xl font-semibold text-center my-6'>Shopping Cart</h2>
@@ -35,7 +66,7 @@ const Cart = () => {
     
     <div className='text-center mt-8'>
         <p className='text-2xl font-semibold mb-4'>Total Price: ${(totalPrice / 100).toFixed(2)}</p>
-        <button  className='btn btn-accent'>Proceed to Checkout</button>
+        <button onClick={handleCheckout} className='btn btn-accent'>Proceed to Checkout</button>
     </div>  
 </div>
   )
