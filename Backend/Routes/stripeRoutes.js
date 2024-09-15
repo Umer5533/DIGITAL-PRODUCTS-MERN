@@ -53,6 +53,30 @@ router.post('/create-checkout-session', async (req, res) => {
     }
 })
 
+router.get('/api/stats', async (req, res)=>{
+    try {
+        const balance = await stripe.balance.retrieve();
+        console.log('Balance Object: ', JSON.stringify(balance, null, 2));
 
+        const availableBalanceUSD = balance.available.find(b=>b.currency === 'usd');
+        const pendingBalanceUSD = balance.pending.find(b=>b.currency === 'usd');
+
+        const availableBalance = availableBalanceUSD ? availableBalanceUSD.amount / 100 : 0;
+        const pendingBalance = pendingBalanceUSD ? pendingBalanceUSD.amount / 100 : 0;
+
+        const charges = await stripe.charges.list({limit: 100});
+
+        const totalCharges = charges.data.length;
+
+        res.json({
+            availableBalance,
+            pendingBalance,
+            totalCharges,
+        })
+    } catch (error) {
+        res.status(500).json({error: error.message});
+        
+    }
+})
 
 export default router;

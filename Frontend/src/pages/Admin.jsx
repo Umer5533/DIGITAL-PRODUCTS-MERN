@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Stats from '../components/Stats';
 
 const Admin = () => {
 
@@ -25,6 +26,7 @@ const Admin = () => {
 
   return (
     <div className='px-4 py-8 max-w-7xl bg-gray-500 mx-auto'>
+        <Stats/>
         <div className='overflow-x-auto'>
             <table className='table'>
                 <thead>
