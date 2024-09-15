@@ -7,6 +7,7 @@ import multer from 'multer'
 import {CloudinaryStorage} from 'multer-storage-cloudinary'
 import productRoute from './Routes/productRoute.js'
 import stripeRoute from './Routes/stripeRoutes.js'
+import subscriberRoute from './Routes/subscriberRoute.js'
 
 config();
 
@@ -71,3 +72,4 @@ app.post('/upload-image', parser.single('file'), (req, res) => {
 
 
 app.use('/stripe', stripeRoute)
+app.use('/subscriber', subscriberRoute)
