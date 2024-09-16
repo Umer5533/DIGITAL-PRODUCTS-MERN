@@ -14,6 +14,8 @@ import Shope from "./pages/Shope";
 import Footer from "./components/Footer";
 
 function App() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
   return (
     <>
     <Navbar/>
@@ -31,7 +33,8 @@ function App() {
       }
       />
       </Routes>
-      <Footer/>
+      {isAdminRoute? '': <Footer/>}
+      
     </>
   );
 }

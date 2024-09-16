@@ -1,12 +1,13 @@
 import express, { request, response } from "express";
 import { Product } from "../Models/productModel.js";
+import { auth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 
 
 // create new product route
-router.post('/', async (request, response) => {
+router.post('/', auth, async (request, response) => {
     try {
         if (!request.body.name||
             !request.body.priceInCents ||
@@ -67,7 +68,7 @@ router.get('/:id', async (request, response) =>{
 
 // delete product route
 
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', auth, async (request, response) => {
     try {
         const {id} = request.params;
         const delProduct = await Product.findByIdAndDelete(id);
@@ -92,7 +93,7 @@ router.delete('/:id', async (request, response) => {
 
 // update route product 
 
-router.put('/:id', async (request, response) => {
+router.put('/:id', auth , async (request, response) => {
     try {
         if(!request.body.name ||
             !request.body.priceInCents ||
