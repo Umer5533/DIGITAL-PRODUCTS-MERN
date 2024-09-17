@@ -12,17 +12,23 @@ import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
 import Shope from "./pages/Shope";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AdminNavbar from "./components/AdminNavbar";
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   return (
     <>
-    <Navbar/>
+    {isAdminRoute? <AdminNavbar/> : <Navbar/>}
+    
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/shope" element={<Shope/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/login" element={<Login/>}/>
       <Route path="/success" element={<Success/>}/>
       <Route path="/cancel" element={<Cancel/>}/>
       <Route path="/admin/*"
