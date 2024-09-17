@@ -10,11 +10,19 @@ const DeleteProduct = () => {
     const {id} = useParams();
     const {enqueueSnackbar} = useSnackbar();
 
+    const token = localStorage.getItem('token');
+    const config = {
+      headers:{
+        'Authorization' : `Bearer ${token}`,
+        'Content-Type' : 'application/json'
+      }
+    }
+
     const handleDeleteProduct = () =>{
         setLoader(true)
 
         axios
-            .delete(`http://localhost:3000/product/${id}`)
+            .delete(`http://localhost:3000/product/${id}`, config)
             .then(()=>{
                 setLoader(false)
                 enqueueSnackbar('Product deleted', {variant: 'success'})

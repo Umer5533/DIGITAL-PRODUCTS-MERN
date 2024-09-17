@@ -16,6 +16,14 @@ const EditProduct = () => {
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
 
+  const token = localStorage.getItem('token');
+  const config = {
+    headers:{
+      'Authorization' : `Bearer ${token}`,
+      'Content-Type' : 'application/json'
+    }
+  }
+
   useEffect(() => {
     setLoader(true);
 
@@ -41,7 +49,7 @@ const EditProduct = () => {
     setLoader(true);
 
     axios
-      .put(`http://localhost:3000/product/${id}`, data)
+      .put(`http://localhost:3000/product/${id}`, data , config)
       .then(() => {
         setLoader(false);
         enqueueSnackbar("Product Edit successfully", { variant: "success" });
