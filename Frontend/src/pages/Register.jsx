@@ -39,7 +39,7 @@ setIsSuccess(false);
                 }
             };
 
-            await axios.post('http://localhost:3000/auth/register',{
+            await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/register`,{
                 name: userData.name,
                 email:userData.email,
                 password: userData.password

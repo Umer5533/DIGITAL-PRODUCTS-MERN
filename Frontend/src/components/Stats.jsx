@@ -12,7 +12,7 @@ const Stats = () => {
     useEffect(()=>{
         const fetchStats = async ()=>{
             try {
-                const response = await fetch('http://localhost:3000/stripe/api/stats');
+                const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/stripe/api/stats`);
                 if(!response.ok){
                     throw new Error('Network response was not ok');
                 }

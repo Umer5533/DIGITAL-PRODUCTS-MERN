@@ -22,7 +22,7 @@ const DeleteProduct = () => {
         setLoader(true)
 
         axios
-            .delete(`http://localhost:3000/product/${id}`, config)
+            .delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/product/${id}`, config)
             .then(()=>{
                 setLoader(false)
                 enqueueSnackbar('Product deleted', {variant: 'success'})

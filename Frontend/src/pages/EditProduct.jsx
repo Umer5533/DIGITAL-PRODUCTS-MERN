@@ -28,7 +28,7 @@ const EditProduct = () => {
     setLoader(true);
 
     axios
-      .get(`http://localhost:3000/product/${id}`)
+      .get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/product/${id}`)
       .then((response) => {
         setName(response.data.name || "");
         setPriceInCents(response.data.priceInCents || "");
@@ -49,7 +49,7 @@ const EditProduct = () => {
     setLoader(true);
 
     axios
-      .put(`http://localhost:3000/product/${id}`, data , config)
+      .put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/product/${id}`, data , config)
       .then(() => {
         setLoader(false);
         enqueueSnackbar("Product Edit successfully", { variant: "success" });
