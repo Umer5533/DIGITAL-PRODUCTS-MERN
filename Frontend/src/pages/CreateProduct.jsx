@@ -108,16 +108,16 @@ const CreateProduct = () => {
         }
     }
   return (
-    <div className="p-6 bg-gray-50 flex justify-center items-center ">
+    <div className="p-6  flex justify-center items-center ">
     {loader && <Spinner/>}
-  <div className="container max-w-lg shadow-lg rounded-lg p-5 bg-white">
+  <div className="container max-w-lg shadow-lg rounded-lg p-5 bg-base-300">
     <Link
       to="/admin"
-      className="flex justify-center items-center bg-gray-400 mb-4 w-12 py-2 px-4 text-sm rounded-xl"
+      className="btn flex justify-center items-center  mb-4 w-12 py-2 px-4 text-sm rounded-xl"
     >
       Back
     </Link>
-    <h1 className="text-3xl font-semibold my-4 text-gray-800">
+    <h1 className="text-3xl font-semibold my-4 ">
       {" "}
       Create Product
     </h1>
@@ -173,7 +173,7 @@ const CreateProduct = () => {
       </select>
 
 
-      <label htmlFor="img" className="block text-lg text-gray-600 mb-2">
+      <label htmlFor="img" className="block text-lg   mb-2">
        Upload Image
       </label>
       <input

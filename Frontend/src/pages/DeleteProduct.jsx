@@ -37,10 +37,10 @@ const DeleteProduct = () => {
             })
     }
   return (
-    <div className='p-6 bg-base-100 flex justify-center items-center'>
+    <div className='p-6  flex justify-center items-center'>
         {loader && <Spinner/>}
-    <div className='container max-w-lg shadow-lg p-5'>
-        <Link to="/admin" className='flex justify-center items-center mb-4 w-12 py-2 px-4
+    <div className='container bg-base-200 max-w-lg shadow-lg p-5'>
+        <Link to="/admin" className=' flex justify-center items-center mb-4 w-12 py-2 px-4
                                       btn  text-sm rounded-xl'>
             Back
         </Link>

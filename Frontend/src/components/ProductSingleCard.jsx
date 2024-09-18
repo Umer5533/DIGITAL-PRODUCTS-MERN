@@ -22,7 +22,7 @@ const ProductSingleCard = ({product}) => {
       src={product.image}
       alt={product.image} />
   </figure>
-  <div className="card-body">
+  <div className="card-body bg-base-200">
     <h2 className="card-title">{product.name}</h2>
     <p>{product.description || 'No description available.'}</p>
     <div className="price">

@@ -25,7 +25,7 @@ const Admin = () => {
     },[])
 
   return (
-    <div className='px-4 py-8 max-w-7xl bg-gray-500 mx-auto'>
+    <div className='px-4 py-8 max-w-7xl  mx-auto'>
         <Stats/>
         <div className='overflow-x-auto'>
             <table className='table'>
@@ -44,7 +44,7 @@ const Admin = () => {
                 <tbody>
                     {
                         product.map((product,index)=>(
-                            <tr key={product._id} className='bg-white hover:bg-gray-300'>
+                            <tr key={product._id} className='bg-base-100 hover:bg-base-300'>
                                 <td>
                                     <div className='avatar'>
                                         <div className='mask mask-squircle w-12 h-12'>

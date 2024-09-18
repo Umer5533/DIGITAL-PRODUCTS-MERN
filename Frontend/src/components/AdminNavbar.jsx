@@ -12,9 +12,9 @@ const AdminNavbar = () => {
   return (
     <div className="navbar max-w-[1200px] mx-auto">
 
-    <div className="navbar-center hidden lg:flex">
+    <div className="navbar-center flex">
   
-        <button onClick={logout} className=''>Logout</button>
+        <button onClick={logout} className='btn'>Logout</button>
     </div>
 
 <div className='navbar-end gap-12'>

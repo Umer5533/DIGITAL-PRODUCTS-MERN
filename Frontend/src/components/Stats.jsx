@@ -58,7 +58,7 @@ const Stats = () => {
         <div className="stat">
           <div className="stat-title text-base-100">Total Purchases</div>
           <div className="stat-value">{loading ? 'Loading...' : stats.totalCharges}</div>
-          <div className="stat-desc">21% more than last month</div>
+          <div className="text-sm ">21% more than last month</div>
         </div>
       </div>
       
