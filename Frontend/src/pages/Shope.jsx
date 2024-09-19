@@ -9,10 +9,11 @@ const Shope = () => {
 
     useEffect(()=>{
         axios
-            .get('${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/product')
+            .get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/product`)
             .then((response)=>{
-                setProduct(response.data.data);
-                setFilteredProducts(response.data.data);
+              const productData = response.data?.data || []; // Fallback to an empty array if no data
+              setProduct(productData);
+              setFilteredProducts(productData);
             })
             .catch((error)=>{
                 console.log(error)
